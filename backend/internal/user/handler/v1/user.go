@@ -73,8 +73,8 @@ func NewUserHandler(
 		limiter:   rate.NewLimiter(rate.Every(time.Duration(cfg.Extension.LimitSecond)*time.Second), cfg.Extension.Limit),
 	}
 
-	w.GET("/api/v1/static/vsix/:version", web.BaseHandler(u.VSIXDownload))
-	w.GET("/api/v1/static/vsix", web.BaseHandler(u.VSIXDownload))
+	w.GET("/api/v1/static/vsix/:version", web.BaseHandler(u.ZipDownload))
+	w.GET("/api/v1/static/vsix", web.BaseHandler(u.ZipDownload))
 	w.GET("/api/v1/static/zip/:version", web.BaseHandler(u.ZipDownload))
 	w.GET("/api/v1/static/zip", web.BaseHandler(u.ZipDownload))
 	w.POST("/api/v1/vscode/init-auth", web.BindHandler(u.VSCodeAuthInit))
